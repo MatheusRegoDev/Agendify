@@ -4,7 +4,7 @@ import com.example.agendify.dtos.ClientRecordDto;
 import com.example.agendify.models.ClientModel;
 import com.example.agendify.repositories.ClientRepositoy;
 import jakarta.persistence.Id;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.parsing.BeanEntry;

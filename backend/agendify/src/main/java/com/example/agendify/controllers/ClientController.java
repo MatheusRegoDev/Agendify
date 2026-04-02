@@ -57,7 +57,7 @@ public class ClientController {
         }
     }
 
-    @DeleteMapping("/client")
+    @DeleteMapping("/clients")
     public ResponseEntity<Object> deleteClientByName(@RequestParam String name) {
         try {
             clientService.deleteClientByName(name);
