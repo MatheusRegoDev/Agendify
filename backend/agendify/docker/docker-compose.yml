@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: agendify-db
+    restart: always
+    environment:
+      POSTGRES_DB: agendify
+      POSTGRES_USER: agendify_user
+      POSTGRES_PASSWORD: agendify_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - agendify_data:/var/lib/postgresql/data
+
+volumes:
+  agendify_data:

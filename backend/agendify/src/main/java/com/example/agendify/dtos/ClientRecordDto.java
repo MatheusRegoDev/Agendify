@@ -1,7 +1,6 @@
 package com.example.agendify.dtos;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record ClientRecordDto(@NotBlank String name,

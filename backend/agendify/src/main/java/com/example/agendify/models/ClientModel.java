@@ -1,7 +1,6 @@
 package com.example.agendify.models;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -12,8 +11,13 @@ public class ClientModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "client_id")
     private UUID idClient;
+
+    @Column(unique = true, nullable = false)
     String name;
+
+    @Column(nullable = false)
     String cellPhone;
 
     public UUID getIdClient() {
