@@ -5,12 +5,13 @@ import com.example.agendify.models.RoleModel;
 import com.example.agendify.repositories.EmployeeRepository;
 import com.example.agendify.repositories.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
+@Configuration
 public class AdminConfig implements CommandLineRunner {
 
     private final RoleRepository roleRepository;
