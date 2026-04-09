@@ -4,6 +4,7 @@ import com.example.agendify.dtos.ClientRecordDto;
 import com.example.agendify.models.ClientModel;
 import com.example.agendify.repositories.ClientRepositoy;
 import com.example.agendify.services.ClientService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,19 @@ import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/clients")
 public class ClientController {
 
-    @Autowired
-    ClientService clientService;
 
-    @PostMapping("/clients")
+    private final ClientService clientService;
+
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
+    }
+
+
+    @PostMapping
+
     public ResponseEntity<Object> saveClient(@RequestBody @Valid ClientRecordDto clientRecordDto) {
         try {
             ClientModel savedClient = clientService.saveClient(clientRecordDto);
@@ -32,12 +40,12 @@ public class ClientController {
 
     }
 
-    @GetMapping("/clients")
+    @GetMapping
     public ResponseEntity<List<ClientModel>> getAllClients() {
         return ResponseEntity.ok(clientService.getAllClients());
     }
 
-    @GetMapping("/clients/search")
+    @GetMapping("/search")
     public ResponseEntity<Object> getOneClientByName(@RequestParam String name){
         try {
             return ResponseEntity.ok(clientService.getOneClientByName(name));
@@ -46,7 +54,7 @@ public class ClientController {
         }
     }
 
-    @PutMapping("/clients/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateClient(@PathVariable UUID id, @RequestBody @Valid ClientRecordDto clientRecordDto){
         try {
             return ResponseEntity.ok(clientService.updateClient(id, clientRecordDto));
@@ -57,7 +65,7 @@ public class ClientController {
         }
     }
 
-    @DeleteMapping("/clients")
+    @DeleteMapping
     public ResponseEntity<Object> deleteClientByName(@RequestParam String name) {
         try {
             clientService.deleteClientByName(name);

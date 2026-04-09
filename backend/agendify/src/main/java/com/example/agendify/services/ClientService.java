@@ -3,11 +3,9 @@ package com.example.agendify.services;
 import com.example.agendify.dtos.ClientRecordDto;
 import com.example.agendify.models.ClientModel;
 import com.example.agendify.repositories.ClientRepositoy;
-import jakarta.persistence.Id;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.parsing.BeanEntry;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,12 +15,16 @@ import java.util.UUID;
 @Service
 public class ClientService {
 
-    @Autowired
-    ClientRepositoy clientRepositoy;
+    private final ClientRepositoy clientRepositoy;
 
+    public ClientService(ClientRepositoy clientRepositoy) {
+        this.clientRepositoy = clientRepositoy;
+    }
+
+    @Transactional
     public ClientModel saveClient(ClientRecordDto clientRecordDto) {
         if(clientRepositoy.existsByNameIgnoreCase(clientRecordDto.name())){
-            throw new IllegalArgumentException("Cliente: " + clientRecordDto.name() +  "já foi cadastrado");
+            throw new IllegalArgumentException("Cliente: " + clientRecordDto.name() +  " já foi cadastrado");
         }
 
         var clientModel = new ClientModel();
@@ -35,11 +37,13 @@ public class ClientService {
         return clientRepositoy.findAll();
     }
 
+
     public ClientModel getOneClientByName(String name){
         return clientRepositoy.findByNameIgnoreCase(name)
                 .orElseThrow(() ->new NoSuchElementException("Cliente não encontrado com o nome: " + name));
     }
 
+    @Transactional
     public ClientModel updateClient(UUID id, ClientRecordDto clientRecordDto){
         ClientModel existingClient = clientRepositoy.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Cliente com id: " + id +  "não encontrado"));

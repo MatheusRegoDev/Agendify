@@ -12,7 +12,7 @@ public class SchedulingModel  implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "scheduling_id")
     private UUID idScheduling;
 

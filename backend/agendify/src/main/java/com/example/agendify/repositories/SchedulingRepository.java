@@ -1,11 +1,12 @@
 package com.example.agendify.repositories;
 
 import com.example.agendify.models.EmployeeModel;
+import com.example.agendify.models.SchedulingModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
-public interface SchedulingRepository extends JpaRepository<EmployeeModel, UUID> {
+public interface SchedulingRepository extends JpaRepository<SchedulingModel, UUID> {
 }
