@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.Instant;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,26 +44,26 @@ public class AuthService {
         }
 
         var now = Instant.now();
-        var expirensIn = 300L;
+
 
         String roles = employee.getRoles().stream()
                 .map(RoleModel::getName)
                 .collect(Collectors.joining(" "));
 
-        var scopes = employee.getRoles().stream()
+        List<String> scopes = employee.getRoles().stream()
                 .map(RoleModel::getName)
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.toList());
 
         var claims = JwtClaimsSet.builder()
                 .issuer("Agendify")
                 .issuedAt(now)
-                .expiresAt(now.plusSeconds(expirensIn))
+                .expiresAt(now.plusSeconds(expiration))
                 .subject(employee.getEmail())
                 .claim("scope", scopes)
                 .build();
 
         var jwtValue = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
 
-        return new LoginResponseDto(jwtValue, expirensIn);
+        return new LoginResponseDto(jwtValue, expiration);
     }
 }
