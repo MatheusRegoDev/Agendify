@@ -23,8 +23,9 @@ public class SchedulingModel  implements Serializable {
     @Column(nullable = false)
     private LocalDate schedulingDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private Status status;
 
 
     public UUID getIdScheduling() {
@@ -51,11 +52,19 @@ public class SchedulingModel  implements Serializable {
         this.schedulingDate = schedulingDate;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public enum Status {
+        SCHEDULED,
+        COMPLETED,
+        CONFIRMED,
+        CANCELED,
+        RESCHEDULED
     }
 }
