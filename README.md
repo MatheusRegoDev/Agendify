@@ -3,10 +3,7 @@
 
 > Sistema de Agendamento e Gestão de Filas
 ---
-
-
-![Logo](<img width="1408" height="768" alt="Gemini_Generated_Image_9o84xe9o84xe9o84" src="https://github.com/user-attachments/assets/0a6d5e55-5b39-4ccc-af2e-7f2c01b118d5" />)
-
+![Logo]()
 ---
 
 
