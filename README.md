@@ -3,9 +3,11 @@
 
 > Sistema de Agendamento e Gestão de Filas
 ---
-![Logo]()
----
 
+
+<img width="1024" height="559" alt="agendify_logo" src="https://github.com/user-attachments/assets/fa3b586a-e7a5-4382-b965-57c90b6f9237" />
+
+---
 
 ## Visão Geral
 
