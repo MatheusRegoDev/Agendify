@@ -64,8 +64,7 @@ O projeto foi construído utilizando uma arquitetura desacoplada (Decoupled Arch
 * **SockJS-Client & @stomp/stompjs (com `@types`):** Bibliotecas para conexão cliente-servidor via WebSockets, permitindo o recebimento de eventos tipados em tempo real na tela do Painel sempre que um cliente for chamado.
 
 ### Infraestrutura, Dados e Ferramentas
-* **PostgreSQL / MySQL:** Banco de dados relacional para armazenamento seguro dos históricos de atendimento, agendamentos e transações de usuários em conformidade com as propriedades ACID.
-* **Flyway / Liquibase:** Ferramenta de migração de banco de dados, garantindo o versionamento do esquema (DDL) de forma controlada.
+* **PostgreSQL / H2 Banco em memória:** Banco de dados relacional para armazenamento seguro dos históricos de atendimento, agendamentos e transações de usuários em conformidade com as propriedades ACID.
 * **Docker:** Utilizado para a conteinerização e isolamento do ambiente de banco de dados e serviços locais, facilitando o deploy.
 * **Maven:** Gerenciador de dependências e automação do build do projeto Java.## Documentação do Projeto
 
